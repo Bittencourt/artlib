@@ -8,6 +8,15 @@ function euclidianDistance(x,w)
 	return math.sqrt(dist)
 end
 
+function pNormDistance(x,w,p)
+	local dist = 0
+	f(w == nil) then return -1 end
+	if (#x ~= #w) then error("dimension of input mismatch, expected:"..#w.." got:"..#x) end
+	for i,v in pairs(x) do
+		dist = dist + (x[i]-w[i])^p
+	end
+	return dist^(1/p)
+end
 function minDist(resTable,net)
 	local d = nil
 	local winner = nil
